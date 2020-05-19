@@ -32,6 +32,11 @@ public class UserManager extends Model{
 		mainUser.setStatus(newStatus);
 		home();//change to home view
 	}
+	//upload a picture to the mainUser
+	public void pictureChange(String filePath){
+		mainUser.setPicture(filePath); 
+		home();
+	}
 	//searches the user
 	public void search(String name) throws Exception{
 		if(!userList.doesUserExist(name)) throw new UserDoesNotExistException("This user does not exist");
