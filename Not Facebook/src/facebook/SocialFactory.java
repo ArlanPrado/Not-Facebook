@@ -19,7 +19,7 @@ public class SocialFactory implements AppFactory{
 	public Command makeEditCommand(Model model, String type) {		
 		switch(type) {
 		case("Home"): return new Home(model);
-		case("New Status"): return new ModifyProfile(model);
+		case("New Status"): return new NewStatus(model);
 		case("Search"): return new Search(model);
 		case("Add Friend"): return new AddFriend(model);
 		case("Log Out"): return new Leave(model);
