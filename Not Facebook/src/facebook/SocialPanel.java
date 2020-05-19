@@ -1,13 +1,18 @@
 package facebook;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
+
 import javax.swing.*;
 import mvc.*;
 
 public class SocialPanel extends AppPanel{		//this itself is the encompassing panel
+	
+	static final int WIDTH = 220;
+	static final int HEIGHT = 160;
 
 	JTextField name = new JTextField();
 	JTextField status = new JTextField();
+	JLabel imageLabel = new JLabel();
 	//JTextArea friends = new JTextArea();
 	List friendsList = new List();
 
@@ -19,7 +24,7 @@ public class SocialPanel extends AppPanel{		//this itself is the encompassing pa
 		this.setLayout(new GridLayout(1,2));
 		//button panel
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new GridLayout (5, 1));
+		buttonPanel.setLayout(new GridLayout (6, 1));
 		
 		JPanel p = new JPanel();
 		JButton button = new JButton("Home");
@@ -29,6 +34,12 @@ public class SocialPanel extends AppPanel{		//this itself is the encompassing pa
 		
 		p = new JPanel();
 		button = new JButton("New Status");
+		button.addActionListener(this);
+		p.add(button);
+		buttonPanel.add(p);
+		
+		p = new JPanel();
+		button = new JButton("New Profile Picture");
 		button.addActionListener(this);
 		p.add(button);
 		buttonPanel.add(p);
@@ -76,10 +87,18 @@ public class SocialPanel extends AppPanel{		//this itself is the encompassing pa
 		
 			JPanel textPanel = new JPanel();
 			textPanel.setLayout(new GridLayout(3,1));
-			//p = new JPanel();
-			//p.add(name);
-			textPanel.add(name);
-			//p = new JPanel();
+			
+				p = new JPanel();
+				p.setLayout(new BorderLayout(2,1));
+	
+					JPanel q = new JPanel();
+					q.setLayout(new BorderLayout());
+					q.add(imageLabel, "Center");
+	
+				p.add(q, "North");
+				p.add(name, "South");
+			
+			textPanel.add(p);
 			p.add(status);
 			textPanel.add(status);
 
@@ -93,8 +112,15 @@ public class SocialPanel extends AppPanel{		//this itself is the encompassing pa
 	//receives the changed() command and changes the view for the user based on the command
 	public void propertyChange(PropertyChangeEvent arg0) {
 		UserManager userMG = (UserManager)model;
-		name.setText(userMG.getViewedUser().getName());
-		status.setText(userMG.getViewedUser().getStatus());
+		name.setText(userMG.getViewedUser().getName());		//set name
+		status.setText(userMG.getViewedUser().getStatus());		//set status
+		
+		ImageIcon icon = new ImageIcon(userMG.getViewedUser().getPicture());
+		Image image = icon.getImage();
+		Image newimg = image.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH);
+		icon = new ImageIcon(newimg);
+		imageLabel.setIcon(icon);			//set the profile picture
+		
 		friendsList.removeAll();					//to prevent from duplicating friends names, remove all the contents from the list and reenter
 		for(String c : userMG.getViewedUser().getFriendList().getNames().getItems()) {
 			friendsList.add(c);

@@ -28,9 +28,14 @@ public class UserManager extends Model{
 		changed();			//notifies the framework that the model has changed
 	}
 	//Consider having a character count
-	public void modify(String newStatus) throws Exception{
+	public void statusChange(String newStatus) throws Exception{
 		mainUser.setStatus(newStatus);
 		home();//change to home view
+	}
+	//upload a picture to the mainUser
+	public void pictureChange(String filePath){
+		mainUser.setPicture(filePath); 
+		home();
 	}
 	//searches the user
 	public void search(String name) throws Exception{
