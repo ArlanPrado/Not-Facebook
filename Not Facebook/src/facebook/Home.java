@@ -1,5 +1,10 @@
 package facebook;
 import mvc.*;
+/** Home executes the home method in UserManager which would reset the viewed user to the main user
+ * 
+ * @author arlan
+ *
+ */
 public class Home extends Command{
 
 	public Home(Model model) {

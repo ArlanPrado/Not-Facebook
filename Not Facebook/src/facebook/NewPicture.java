@@ -1,10 +1,14 @@
 package facebook;
 import mvc.*;
-
 import java.io.File;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+/**Changes the profile picture of the user by getting the filepath of the image
+ * This only accepts JPGs and PNGs
+ * @author arlan
+ *
+ */
 public class NewPicture extends Command {
 
 	public NewPicture(Model model) {
@@ -20,7 +24,6 @@ public class NewPicture extends Command {
 		chooser.setFileFilter(filter);
 		int returnVal = chooser.showOpenDialog(null);
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
-			//System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
 			File f = chooser.getSelectedFile();
 			String fileName = f.getAbsolutePath();
 			try {
@@ -30,11 +33,6 @@ public class NewPicture extends Command {
 				Utilities.error(e);
 			}
 		}
-		//String imgFile = 
-		//Ask to upload a file
-			//get file location, upload it to 
-		//try and catch if file is acceptable?		
-			//upload image to usermanager
 	}
 
 }

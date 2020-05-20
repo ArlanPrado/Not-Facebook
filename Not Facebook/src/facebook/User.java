@@ -2,6 +2,11 @@ package facebook;
 
 import java.io.Serializable;
 
+/**class that has all the properties of a user
+ * 
+ * @author arlan
+ *
+ */
 public class User implements Serializable{
 	private String username;
 	private String password;
@@ -21,7 +26,6 @@ public class User implements Serializable{
 	public String getName() {
 		return username;
 	}
-	//adds friend
 	public void addFriend(User friend) throws Exception {
 		friendList.addUser(friend);
 	}
@@ -44,6 +48,12 @@ public class User implements Serializable{
 	}
 	
 	//returns if the login matches with the user being accessed
+	/** Returns boolean of if the user logging in has the correct credentials
+	 * 	
+	 * @param user
+	 * @param pass
+	 * @return
+	 */
 	public boolean isUser(String user, String pass) {
 		if(username.equals(user) && password.equals(pass)) {
 			return true;

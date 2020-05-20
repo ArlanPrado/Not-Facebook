@@ -6,12 +6,17 @@ import java.beans.*;
 import java.util.*;
 import javax.swing.*;
 
+/**Class that acts as a JPanel, for easier customization
+ * 
+ * @author arlan
+ *
+ */
 public class AppPanel extends JPanel implements PropertyChangeListener, ActionListener  {
 
 	protected Model model;
 	protected AppFactory factory;
 	protected Set<View> views;
-	protected JFrame frame;	//made protected, changed to private
+	protected JFrame frame;	//made protected, to allow for closing for subclasses
 	public static int FRAME_WIDTH = 900;
 	public static int FRAME_HEIGHT = 600;
 
@@ -41,7 +46,7 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
 
 	public void display() { frame.setVisible(true); }
 	
-	//
+	
 	public void propertyChange(PropertyChangeEvent evt) {
 		/* override in extensions if needed */
 	}
@@ -58,6 +63,10 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
 		//alternatively: this.model.copy(model);
 	}
 
+	/** Creates the menu bar
+	 * the factory return the edit commands to update it to current functions, also gets the "About" and "Help" section in the factory
+	 * @return JMenuBar 
+	 */
 	protected JMenuBar createMenuBar() {
 		JMenuBar result = new JMenuBar();
 		// add file, edit, and help menus
@@ -76,6 +85,9 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
 		return result;
 	}
 
+	/** Gets the actionevents triggered by buttons in the subclass
+	 *  All actions by Users are classes of their own and executed by the CommandProcessor
+	 */
 	public void actionPerformed(ActionEvent ae) {
 		String cmmd = ae.getActionCommand();
 

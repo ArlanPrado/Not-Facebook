@@ -1,5 +1,10 @@
 package facebook;
 import mvc.*;
+/**This sets the status of the main user by using the Utilities.ask function
+ * 
+ * @author arlan
+ *
+ */
 public class NewStatus extends Command{
 
 	public NewStatus(Model model) {
