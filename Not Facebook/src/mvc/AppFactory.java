@@ -7,5 +7,5 @@ public interface AppFactory {
 	public String getTitle();
 	public String[] getHelp();
 	public String about();
-	//public View getView(Model model);
+	//public View getView(Model model); Only needed if there is a specific view
 }

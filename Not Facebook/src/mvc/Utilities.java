@@ -6,6 +6,11 @@ import java.util.Random;
 
 import javax.swing.*;
 
+/**A static class that utilizes JOPtionPanes
+ * 
+ * @author arlan
+ *
+ */
 public class Utilities {
 	
 	// asks user a yes/no question
