@@ -80,12 +80,24 @@ public class LogInPanel extends JPanel{
 						try {
 							String user = username.getText();
 							String pass = password.getText();
+<<<<<<< Updated upstream
 							User temp = new User(user, pass);
 							UserManager.userList.addUser(temp);
 							mvc.Utilities.inform("New User Created!");
 							}
 						catch (Exception er){
 							mvc.Utilities.error(er);
+=======
+							if(!user.isEmpty() && !pass.isEmpty()) {
+								User temp = new User(user, pass);
+								UserManager.userList.addUser(temp);				//adds new users to the list
+								mvc.Utilities.inform("New User Created!");
+							}else {
+								mvc.Utilities.inform("The username and password does not meet the requirements");
+							}
+						}catch (Exception er){
+							mvc.Utilities.error(er);			//if the user is already created sends an error message
+>>>>>>> Stashed changes
 						}
 						
 					}});
