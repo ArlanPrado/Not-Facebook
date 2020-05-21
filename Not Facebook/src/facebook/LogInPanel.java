@@ -4,7 +4,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-//@author arlan prado
+/**This is the application/panel that starts Not Facebook
+ * 
+ * @author arlan
+ *
+ */
 public class LogInPanel extends JPanel{
 	private JFrame frame;
 	public static int FRAME_WIDTH = 400;
@@ -48,7 +52,7 @@ public class LogInPanel extends JPanel{
 				JPanel p = new JPanel();
 				JButton button = new JButton("Log in");		//login button
 				button.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
+					public void actionPerformed(ActionEvent arg0) {	//action performed for log in button
 						try {
 						String user = username.getText();
 						String pass = password.getText();
@@ -58,7 +62,7 @@ public class LogInPanel extends JPanel{
 								
 								frame.setVisible(false);		//close window after successful log in
 								SocialPanel panel = new SocialPanel(new SocialFactory(),temp);
-								panel.NewScreen(temp);			//start application window
+								panel.NewScreen(temp);			//start application window in SocialPanel.java
 							}else {
 								mvc.Utilities.error("Wrong username or password");
 							}
@@ -75,19 +79,11 @@ public class LogInPanel extends JPanel{
 			loginButtonPanel.add(p, "West");
 				
 				button = new JButton("Create a New Account");	//new account button
-				button.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				button.addActionListener(new ActionListener() {	
+					public void actionPerformed(ActionEvent e) {	//performs action for new account button
 						try {
 							String user = username.getText();
 							String pass = password.getText();
-<<<<<<< Updated upstream
-							User temp = new User(user, pass);
-							UserManager.userList.addUser(temp);
-							mvc.Utilities.inform("New User Created!");
-							}
-						catch (Exception er){
-							mvc.Utilities.error(er);
-=======
 							if(!user.isEmpty() && !pass.isEmpty()) {
 								User temp = new User(user, pass);
 								UserManager.userList.addUser(temp);				//adds new users to the list
@@ -97,7 +93,6 @@ public class LogInPanel extends JPanel{
 							}
 						}catch (Exception er){
 							mvc.Utilities.error(er);			//if the user is already created sends an error message
->>>>>>> Stashed changes
 						}
 						
 					}});
@@ -112,7 +107,8 @@ public class LogInPanel extends JPanel{
 
 	public void display() { frame.setVisible(true); }
 	
-	//this is what starts up the application
+	
+	//Start here
 	public static void main(String[] args) {
 		LogInPanel panel = new LogInPanel();
 		panel.display();
