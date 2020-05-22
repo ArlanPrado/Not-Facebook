@@ -15,7 +15,7 @@ public class AddFriend extends Command{
 	@Override
 	public void execute() {
 		UserManager um = (UserManager) model;
-		String name = Utilities.ask("Search Name: ");
+		String name = Utilities.ask("Add Friend: ");
 		try {
 			um.addfriend(name);
 		}catch(Exception e) {

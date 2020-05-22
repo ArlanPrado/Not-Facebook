@@ -89,7 +89,7 @@ public class LogInPanel extends JPanel{
 								UserManager.userList.addUser(temp);				//adds new users to the list
 								mvc.Utilities.inform("New User Created!");
 							}else {
-								mvc.Utilities.inform("The username and password does not meet the requirements");
+								mvc.Utilities.error("The username and password does not meet the requirements");
 							}
 						}catch (Exception er){
 							mvc.Utilities.error(er);			//if the user is already created sends an error message

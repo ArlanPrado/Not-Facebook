@@ -17,7 +17,8 @@ public class NewStatus extends Command{
 		UserManager um = (UserManager) model;
 		String status = Utilities.ask("New Status: ");
 		try {
-			um.statusChange(status);
+			if(!status.isEmpty())
+				um.statusChange(status);
 		}catch(Exception e) {
 			Utilities.error(e);
 		}

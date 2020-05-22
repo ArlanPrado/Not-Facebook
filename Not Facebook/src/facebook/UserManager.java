@@ -80,7 +80,7 @@ public class UserManager extends Model{
 	 * @return String of adjacency list
 	 */
 	public String getAdjacencyList() {
-		return userList.getAdjacencyList();
+		return viewed.getFriendList().getAdjacencyList();
 	}
 	
 	/**leave window back to login page
